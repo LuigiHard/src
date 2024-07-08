@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -65,6 +65,29 @@ const images = [
 ];
 
 const Projects = () => {
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  const handleWindowResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleWindowResize);
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
+
+  const getSlidesPerView = () => {
+    if (windowWidth >= 1024) {
+      return 3;
+    } else if (windowWidth >= 768) {
+      return 2;
+    } else {
+      return 1;
+    }
+  };
+
   return (
     <section className='py-20 mx-12' id='portfolio'>
       <style>
@@ -102,28 +125,14 @@ const Projects = () => {
           }
         `}
       </style>
-      <SectionTitle text='Portfólio' />
+      <SectionTitle style={{ marginBottom: '-100px'}} text='Portfólio' />
       <Swiper
-        slidesPerView={3}
+        slidesPerView={getSlidesPerView()}
         spaceBetween={30}
-        pagination={{ clickable: true }}
         navigation
-        modules={[Pagination, Navigation]}
-        breakpoints={{
-          640: {
-            slidesPerView: 1,
-            spaceBetween: 20,
-          },
-          768: {
-            slidesPerView: 1,
-            spaceBetween: 30,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 40,
-          },
-        }}
-        className='py-8 w-100'
+        modules={[, Navigation]}
+        
+        className='py-2 w-100'
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>

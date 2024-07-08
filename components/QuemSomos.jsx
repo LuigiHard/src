@@ -6,6 +6,10 @@ import Img1 from '../assets/QuemSomos/img1a.png';
 import Img2 from '../assets/QuemSomos/img2a.png';
 import Img3 from '../assets/QuemSomos/img3a.png';
 import Img4 from '../assets/QuemSomos/img4a.png';
+import Img5 from '../assets/QuemSomos/img5a.png';
+import Img6 from '../assets/QuemSomos/img6a.png';
+import Img7 from '../assets/QuemSomos/img7a.png';
+import Img8 from '../assets/QuemSomos/img8a.png';
 
 function QuemSomos() {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -28,17 +32,17 @@ function QuemSomos() {
     return (
       <div style={{ width: '100%', margin: '0 auto' }} className="justify-center items-center mt-10" id="quemsomos">
         <Swiper
-          spaceBetween={0}
+          spaceBetween={-0.65}
           slidesPerView={2}
           modules={[Navigation, Pagination, Scrollbar, A11y]}
           navigation
           pagination={{ clickable: true }}
           scrollbar={{ draggable: true }}
         >
-          <SwiperSlide><img src={Img3} alt="" /></SwiperSlide>
-          <SwiperSlide><img src={Img1} alt="" /></SwiperSlide>
-          <SwiperSlide><img src={Img2} alt="" /></SwiperSlide>
-          <SwiperSlide><img src={Img4} alt="" /></SwiperSlide>
+          <SwiperSlide><img src={Img5} alt="" /></SwiperSlide>
+          <SwiperSlide><img src={Img6} alt="" /></SwiperSlide>
+          <SwiperSlide><img src={Img7} alt="" /></SwiperSlide>
+          <SwiperSlide><img src={Img8} alt="" /></SwiperSlide>
         </Swiper>
       </div>
     );

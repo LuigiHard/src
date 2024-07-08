@@ -1,4 +1,5 @@
 import About from './components/About';
+import About2 from './components/About2';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import Projects from './components/Projects';
@@ -8,6 +9,7 @@ import Servicos from './components/NossosServicos'
 import Form from './components/Form';
 import Footer from './components/Footer';
 import Layout from './utils/Layout';
+import PorqueEclipse from './components/PorqueEclipse';
 
 const App = () => {
   return (
@@ -18,12 +20,14 @@ const App = () => {
         <QuemSomos />
         <About />
         <Objetivos />
-        <About />
+        <PorqueEclipse />
+        <About2 />
         <Servicos />
         <Projects />
         <Form />
         <Footer />
       </Layout>
+      <></>
     </>
   );
 };

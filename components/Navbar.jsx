@@ -27,6 +27,19 @@ const Navbar = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const scrollToSection = (sectionId) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      const offset = window.innerHeight / 2 - section.clientHeight / 2;
+      window.scrollTo({
+        top: sectionTop - offset,
+        behavior: 'smooth',
+      });
+      setMenuOpen(false);
+    }
+  };
+
   return (
     <nav
       className={`fixed w-full z-50`}
@@ -50,7 +63,10 @@ const Navbar = () => {
                 key={id}
                 href={href}
                 className='capitalize text-lg tracking-wide hover:text-orange-500 duration-300 text-white py-2 lg:py-0'
-                onClick={() => setMenuOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection(href.substring(1));
+                }}
               >
                 {text}
               </a>

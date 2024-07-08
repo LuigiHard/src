@@ -7,12 +7,10 @@ const About = () => {
       <div className='align-element grid md:grid-cols-2 items-center gap-16'>
        
         <article>
-          <SectionTitle text='code and coffee' />
+          <SectionTitle text='Bem-vindos à ECLIPSE MEDIA & MARKETING, uma agência ágil e dedicada! ' />
           <p className='text-slate-300 mt-8 leading-loose'>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
-            maiores itaque doloribus asperiores dolorum quas voluptates
-            distinctio, porro beatae quam provident libero animi totam,
-            praesentium voluptatem corrupti dignissimos ipsum accusantium!
+            
+Se você está buscando inovar sua estratégia de marketing, ampliar sua presença online ou impulsionar suas vendas, estamos aqui para tornar isso realidade. Nossa equipe é composta por especialistas apaixonados e comprometidos em entregar soluções personalizadas que atendam exatamente às suas necessidades.
           </p>
         </article>
       </div>

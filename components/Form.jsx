@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { useForm } from 'react-hook-form';
 
 export default function Form() {
+  const form = useRef();
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = data => console.log(data);
-  console.log(errors);
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs.sendForm('service_tgvraxz', 'template_b816cdh', form.current, 'kHbeAwXSGJOrb1vaA')
+      .then(
+        (result) => {
+          console.log('SUCCESS!', result.text);
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        }
+      );
+  };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="w-full h-screen flex flex-col items-center justify-center mt-20 mb-20" id='contato'>
+    <form ref={form} onSubmit={sendEmail} className="w-full h-screen flex flex-col items-center justify-center mt-20 mb-20" id='contato'>
       <style>
         {`
           .gradient-text {
@@ -76,29 +90,29 @@ export default function Form() {
       <input
         type="text"
         placeholder="Qual o seu nome?"
-        {...register("Qual o seu nome?", { required: true })}
+        {...register("user_name", { required: true })}
         className="text-white border-white border-2 rounded-lg p-2 mb-8 form-input"
       />
       <input
-        type="text"
+        type="email"
         placeholder="E o seu email?"
-        {...register("E o seu email?", { required: true, pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i })}
+        {...register("user_email", { required: true, pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/i })}
         className="text-white border-white border-2 rounded-lg p-2 mb-8 form-input"
       />
       <input
         type="tel"
         placeholder="Qual seu telefone/WhatsApp?"
-        {...register("Qual seu telefone/WhatsApp?", {})}
+        {...register("user_phone", {})}
         className="text-white border-white border-2 rounded-lg p-2 mb-8 form-input"
       />
       <input
         type="text"
         placeholder="Qual o nome da sua empresa?"
-        {...register("Qual o nome da sua empresa?", { required: true })}
+        {...register("user_company", { required: true })}
         className="text-white border-white border-2 rounded-lg p-2 mb-8 form-input"
       />
       <select
-        {...register("Em que seguimento atua?", { required: true })}
+        {...register("user_segment", { required: true })}
         className="text-white border-white border-2 rounded-lg p-2 mb-8 focus:bg-black focus:text-white form-input"
       >
         <option value="Serviço">Serviço</option>
@@ -109,11 +123,13 @@ export default function Form() {
         <option value="Outro">Outro</option>
       </select>
       <textarea
-        {...register("Message", { required: true })}
+        placeholder="Sua mensagem"
+        {...register("message", { required: true })}
         className="text-white border-white border-2 rounded-lg p-2 mb-8 form-input"
       />
       <input
         type="submit"
+        value="Enviar"
         className="submit-btn cursor-pointer border-white border-2 rounded-lg p-2 text-white form-input"
       />
     </form>
