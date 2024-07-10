@@ -32,7 +32,6 @@ const Footer = () => {
             <a href="#objetivos" className="mr-6 mb-5 hover:text-gray-400" onClick={(e) => { e.preventDefault(); scrollToSection('objetivos'); }}>Objetivos</a>
             <a href="#nossosservicos" className="mr-6 mb-5 hover:text-gray-400" onClick={(e) => { e.preventDefault(); scrollToSection('nossosservicos'); }}>Serviços</a>
             <a href="#portfolio" className="mr-6 mb-5 hover:text-gray-400" onClick={(e) => { e.preventDefault(); scrollToSection('portfolio'); }}>Portfolio</a>
-            <a href="#landingpages" className="mr-6 mb-5 hover:text-gray-400" onClick={(e) => { e.preventDefault(); scrollToSection('landingpages'); }}>LandingPages</a>
             <a href="#contato" className="mr-6 mb-5 hover:text-gray-400" onClick={(e) => { e.preventDefault(); scrollToSection('contato'); }}>Contato</a>
         </nav>
 
