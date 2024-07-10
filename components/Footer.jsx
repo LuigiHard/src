@@ -17,7 +17,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="text-white mb-10 h-80 items-center align-middle" style={{ backgroundColor: '#00000088', margin: 'auto' }}>
+    <footer className="text-white mb-10 h-80 items-center align-middle p-4" style={{ backgroundColor: '#00000088', margin: 'auto' }}>
       <div className="max-w-6xl m-auto flex flex-wrap justify-between items-center " style={{ marginTop: '1-5%' }}>
         {/* Logo Section */}
         <div className="mb-6 lg:mb-0">

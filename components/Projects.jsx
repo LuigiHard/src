@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import { Pagination, Navigation } from 'swiper/modules';
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
+import 'swiper/swiper-bundle.css';
 import SectionTitle from './SectionTitle';
 import Image1 from "../assets/Portfolio/image1.webp";
 import Image2 from "../assets/Portfolio/image2.webp";
@@ -73,22 +71,73 @@ const Projects = () => {
 
   useEffect(() => {
     window.addEventListener('resize', handleWindowResize);
+
     return () => {
       window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
 
-  const getSlidesPerView = () => {
-    if (windowWidth >= 1024) {
-      return 3;
-    } else if (windowWidth >= 768) {
-      return 2;
-    } else {
-      return 1;
-    }
-  };
+  const isMobile = windowWidth < 768; // Example breakpoint
 
+  if (isMobile) {
   return (
+    <section className='py-20 mx-12 mt-48 mb-20' id='portfolio'>
+      <style>
+        {`
+          .swiper-slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+          }
+          .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 600px; /* Set a fixed height */
+            width: 100%; /* Full width */
+            background-color: #f8f8f80; /* Optional: a light background to visualize the container */
+          }
+          .swiper-slide img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+          }
+          .swiper-pagination-bullet {
+            background: linear-gradient(to right, #ff7f46, #ff2368);
+            box-shadow: 0px 0px 5px 2px rgba(128, 128, 128, 1);
+          }
+          .swiper-pagination-bullet-active {
+            background: linear-gradient(to right, #ff7f46, #ff2368);
+          }
+          @media (max-width: 768px) {
+            .swiper-slide img {
+              width: 75vw !important;
+            }
+          }
+        `}
+      </style>
+      <SectionTitle text='Portfólio' />
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={30}
+        
+        navigation
+        modules={[ Navigation]}
+        className='py-2 w-100 -mt-32'
+      >
+        {images.map((image, index) => (
+          <SwiperSlide key={index}>
+            <div className="image-container">
+              <img src={image} alt={`Slide ${index + 1}`} />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </section>
+  );
+} else {
+  return(
     <section className='py-20 mx-12' id='portfolio'>
       <style>
         {`
@@ -125,13 +174,13 @@ const Projects = () => {
           }
         `}
       </style>
-      <SectionTitle style={{ marginBottom: '-100px'}} text='Portfólio' />
+      <SectionTitle text='Portfólio' />
       <Swiper
-        slidesPerView={getSlidesPerView()}
+        slidesPerView={3}
         spaceBetween={30}
+        pagination={{ clickable: true }}
         navigation
-        modules={[, Navigation]}
-        
+        modules={[Pagination, Navigation]}
         className='py-2 w-100'
       >
         {images.map((image, index) => (
@@ -144,6 +193,6 @@ const Projects = () => {
       </Swiper>
     </section>
   );
-};
-
+}
+}
 export default Projects;

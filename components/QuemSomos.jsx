@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Scrollbar, A11y } from 'swiper/modules';
-import 'swiper/swiper-bundle.css';
+import React, { useState, useEffect } from 'react';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import Img1 from '../assets/QuemSomos/img1a.png';
 import Img2 from '../assets/QuemSomos/img2a.png';
 import Img3 from '../assets/QuemSomos/img3a.png';
@@ -11,7 +11,7 @@ import Img6 from '../assets/QuemSomos/img6a.png';
 import Img7 from '../assets/QuemSomos/img7a.png';
 import Img8 from '../assets/QuemSomos/img8a.png';
 
-function QuemSomos() {
+const QuemSomos = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleWindowResize = () => {
@@ -26,36 +26,73 @@ function QuemSomos() {
     };
   }, []);
 
-  const isMobile = windowWidth < 768; // Example breakpoint
+  const images = [Img3, Img1, Img2, Img4];
 
-  if (isMobile) {
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: windowWidth < 768 ? 1 : 4,
+    slidesToScroll: 1,
+    arrows: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+  if (windowWidth < 768) {
     return (
-      <div style={{ width: '100%', margin: '0 auto' }} className="justify-center items-center mt-10" id="quemsomos">
-        <Swiper
-          spaceBetween={-0.65}
-          slidesPerView={2}
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
-          navigation
-          pagination={{ clickable: true }}
-          scrollbar={{ draggable: true }}
-        >
-          <SwiperSlide><img src={Img5} alt="" /></SwiperSlide>
-          <SwiperSlide><img src={Img6} alt="" /></SwiperSlide>
-          <SwiperSlide><img src={Img7} alt="" /></SwiperSlide>
-          <SwiperSlide><img src={Img8} alt="" /></SwiperSlide>
-        </Swiper>
+      <div className="mt-10 mx-auto" id="quemsomos">
+        <style jsx>{`
+          .slick-slide img {
+            width: 100%;
+            height: 100vw;
+            object-fit: cover;
+          }
+
+          .slick-dots li button:before {
+            color: white;
+          }
+
+          .slick-prev:before,
+          .slick-next:before {
+            color: white;
+          }
+          .slick-slide {
+            outline: none;
+          }
+        `}</style>
+        <Slider {...settings}>
+          {images.map((img, index) => (
+            <div key={index} style={{ userSelect: 'none' }}>
+              <img style={{ userSelect: 'none' }} src={img} alt={`Slide ${index + 1}`} />
+            </div>
+          ))}
+        </Slider>
       </div>
     );
   } else {
     return (
-      <div style={{ display: 'flex',  }} className="justify-center items-center h-full mt-0" id="quemsomos">
-        <img src={Img3} alt="" style={{width: '24.5vw', userSelect: 'none' }}/>
-        <img src={Img1} alt="" style={{width: '24.5vw', userSelect: 'none' }}/>
-        <img src={Img2} alt="" style={{width: '24.5vw', userSelect: 'none' }}/>
-        <img src={Img4} alt="" style={{width: '24.5vw', userSelect: 'none' }}/>
+      <div style={{ userSelect: 'none' }} className="justify-center items-center h-full mt-0 flex" id="quemsomos">
+        {images.slice(0, 4).map((img, index) => (
+          <img key={index} src={img} alt={`Image ${index + 1}`} style={{ width: '24.5vw', userSelect: 'none', objectFit: 'cover' }} />
+        ))}
       </div>
     );
   }
-}
+};
 
 export default QuemSomos;

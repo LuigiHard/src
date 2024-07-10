@@ -102,7 +102,7 @@ const Hero = () => {
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 1.2 }}
               >
-                <FaInstagramSquare className='h-4 w-4 text-white hover:text-orange-500 duration-300' />
+                <FaInstagramSquare className='h-12 w-12 text-white hover:text-orange-500 duration-300' />
               </motion.a>
               <motion.a
                 href='https://wa.me/5511973530263'
@@ -112,7 +112,7 @@ const Hero = () => {
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 1.4 }}
               >
-                <FaWhatsappSquare className='h-4 w-4 text-white hover:text-orange-500 duration-300' />
+                <FaWhatsappSquare className='h-12 w-12 text-white hover:text-orange-500 duration-300' />
               </motion.a>
               <motion.a
                 href='https://www.behance.net/GMdesigncriativo'
@@ -122,7 +122,7 @@ const Hero = () => {
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 1.6 }}
               >
-                <FaBehanceSquare className='h-4 w-4 text-white hover:text-orange-500 duration-300' />
+                <FaBehanceSquare className='h-12 w-12 text-white hover:text-orange-500 duration-300' />
               </motion.a>
             </div>
           </article>
@@ -224,7 +224,7 @@ const Hero = () => {
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 1.2 }}
               >
-                <FaInstagramSquare className='h-4 w-4 text-white hover:text-orange-500 duration-300' />
+                <FaInstagramSquare className='h-12 w-12 text-white hover:text-orange-500 duration-300' />
               </motion.a>
               <motion.a
                 href='https://wa.me/5511973530263'
@@ -234,7 +234,7 @@ const Hero = () => {
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 1.4 }}
               >
-                <FaWhatsappSquare className='h-4 w-4 text-white hover:text-orange-500 duration-300' />
+                <FaWhatsappSquare className='h-12 w-12 text-white hover:text-orange-500 duration-300' />
               </motion.a>
               <motion.a
                 href='https://www.behance.net/GMdesigncriativo'
@@ -244,7 +244,7 @@ const Hero = () => {
                 animate={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 1.6 }}
               >
-                <FaBehanceSquare className='h-4 w-4 text-white hover:text-orange-500 duration-300' />
+                <FaBehanceSquare className='h-12 w-12 text-white hover:text-orange-500 duration-300' />
               </motion.a>
             </div>
           </article>
